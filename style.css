@@ -48,18 +48,18 @@ p {
 .cta {
 	display: inline-block;
 	padding: 10px 30px;
-	color: white;
+	color: rgb(132, 68, 9);
 	background-color: transparent;
-	border: 2px solid crimson;
+	border: 2px solid rgb(145, 52, 12);
 	font-size: 2rem;
 	text-transform: uppercase;
 	letter-spacing: 0.1rem;
 	margin-top: 30px;
 	transition: 0.3s ease;
-	transition-property: background-color, color;
+	/* transition-property: b; */
 }
 .cta:hover {
-	color: white;
+	color: rgb(65, 14, 52);
 	background-color: crimson;
 }
 .brand h1 {
@@ -72,7 +72,7 @@ p {
 }
 
 /* Header section */
-#header {
+/* #header {
 	position: fixed;
 	z-index: 1000;
 	left: 0;
@@ -97,7 +97,7 @@ p {
 #header .nav-list ul {
 	list-style: none;
 	position: absolute;
-	background-color: rgb(31, 30, 30);
+	background-color: rgb(71, 42, 42);
 	width: 100vw;
 	height: 100vh;
 	left: 100%;
@@ -118,7 +118,7 @@ p {
 	font-weight: 500;
 	letter-spacing: 0.2rem;
 	text-decoration: none;
-	color: white;
+	color: rgb(211, 69, 69);
 	text-transform: uppercase;
 	padding: 20px;
 	display: block;
@@ -129,7 +129,7 @@ p {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%) scale(0);
-	color: rgba(240, 248, 255, 0.021);
+	color: rgba(7, 39, 67, 0.021);
 	font-size: 13rem;
 	letter-spacing: 50px;
 	z-index: -1;
@@ -140,13 +140,13 @@ p {
 	letter-spacing: initial;
 }
 #header .nav-list ul li:hover a {
-	color: crimson;
+	color: rgb(189, 141, 150);
 }
 #header .hamburger {
 	height: 60px;
 	width: 60px;
 	display: inline-block;
-	border: 3px solid white;
+	border: 3px solid rgb(29, 4, 98);
 	border-radius: 50%;
 	position: relative;
 	display: flex;
@@ -195,7 +195,180 @@ p {
 }
 #header .hamburger.active .bar::after {
 	top: 0;
+} */
+#header {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: auto;
+    backdrop-filter: blur(15px); /* Subtle blur for a more modern effect */
+    background: rgba(31, 30, 30, 0.85); /* Transparent black background */
+    padding: 15px 20px;
+    transition: background 0.3s ease-in-out;
 }
+
+#header .header {
+    min-height: 8vh;
+    background-color: rgba(31, 30, 30, 0.24);
+    transition: 0.3s ease background-color;
+}
+
+#header .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 10px;
+    height: 100%;
+    transition: 0.3s ease-in-out;
+}
+
+#header .nav-list ul {
+    list-style: none;
+    position: absolute;
+    background-color: rgb(39, 38, 41); /* Darkened background for elegance */
+    width: 100vw;
+    height: 100vh;
+    left: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: 0.5s ease left;
+}
+
+#header .nav-list ul.active {
+    left: 0%;
+}
+
+#header .nav-list ul a {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+    text-decoration: none;
+    color: rgb(255, 85, 85); /* Lighter shade for modern pop */
+    text-transform: uppercase;
+    padding: 20px;
+    display: block;
+    position: relative;
+    transition: 0.3s ease-in-out;
+}
+
+#header .nav-list ul a::after {
+    content: attr(data-after);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: rgba(240, 248, 255, 0.1);
+    font-size: 13rem;
+    letter-spacing: 50px;
+    z-index: -1;
+    transition: 0.3s ease letter-spacing;
+}
+
+#header .nav-list ul li:hover a::after {
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: initial;
+}
+
+#header .nav-list ul li:hover a {
+    color: rgb(220, 135, 135); /* Soft hover effect */
+}
+
+#header .hamburger {
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+    border: 3px solid rgb(0, 175, 255); /* Lighter border for a fresh look */
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+    transform: scale(1);
+    margin-right: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+#header .hamburger:after {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 175, 255, 0.7); /* Pulsing effect border */
+    animation: hamburger_puls 1.5s ease infinite;
+}
+
+#header .hamburger .bar {
+    height: 2px;
+    width: 30px;
+    position: relative;
+    background-color: rgba(0, 175, 255, 0.9); /* Light blue for a modern tone */
+    z-index: -1;
+    transition: 0.3s ease;
+}
+
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    background-color: rgba(0, 175, 255, 0.9);
+    transition: 0.3s ease;
+    transition-property: top, bottom;
+}
+
+#header .hamburger .bar::after {
+    top: 8px;
+}
+
+#header .hamburger .bar::before {
+    bottom: 8px;
+}
+
+#header .hamburger.active .bar::before {
+    bottom: 0;
+}
+
+#header .hamburger.active .bar::after {
+    top: 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    #header .nav-list ul {
+        position: absolute;
+        left: 100%;
+        width: 100vw;
+    }
+
+    #header .nav-bar {
+        flex-direction: column;
+    }
+
+    #header .nav-list ul a {
+        font-size: 3rem;
+        padding: 25px;
+    }
+
+    #header .hamburger {
+        transform: scale(1.1);
+        margin-right: 20px;
+    }
+}
+
 /* End Header section */
 
 /* Hero Section */
@@ -440,23 +613,68 @@ p {
 
 /* Button Styling */
 #btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
+    padding: 14px 32px;
+    background: rgba(0, 123, 255, 0.2); /* Transparent glass effect */
+    backdrop-filter: blur(10px); /* Blurry background for glassmorphism */
     color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    border: 2px solid rgba(0, 123, 255, 0.5); /* Semi-transparent border */
+    border-radius: 50px; /* Fully rounded for a pill shape */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0px 0px 15px rgba(0, 123, 255, 0.4);
 }
 
-/* Button Hover: Slight Scale & Color Change */
+/* Neon Glow & Lift on Hover */
 #btn:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-    box-shadow: 0px 5px 15px rgba(0, 91, 187, 0.4);
+    background: rgba(0, 123, 255, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0px 0px 25px rgba(0, 123, 255, 0.8);
+    border-color: rgba(0, 123, 255, 0.8);
 }
+
+/* Press Effect */
+#btn:active {
+    transform: translateY(2px);
+    box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5);
+}
+
+/* Focus Outline */
+#btn:focus {
+    outline: none;
+    box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.9);
+}
+
+/* Futuristic Ripple Effect */
+#btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: width 0.4s ease-out, height 0.4s ease-out, opacity 0.3s ease-out;
+}
+
+#btn:active::after {
+    width: 0;
+    height: 0;
+    opacity: 1;
+}
+
 
 /* End Projects section */
 
