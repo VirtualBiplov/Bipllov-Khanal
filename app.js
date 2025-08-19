@@ -1,31 +1,42 @@
+// Hamburger Toggle
+const hamburger = document.querySelector(".hamburger");
+const navList = document.querySelector(".nav-list ul");
 
-document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.querySelector("#header .hamburger");
-    const mobileMenu = document.querySelector("#header .nav-list ul");
-    const menuItems = document.querySelectorAll("#header .nav-list ul li a");
-    const header = document.querySelector("#header");
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navList.classList.toggle("active");
+});
 
-    // Toggle menu on click
-    hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        mobileMenu.classList.toggle("active");
-    });
-
-    // Close menu when clicking on a link
-    menuItems.forEach((item) => {
-        item.addEventListener("click", () => {
-            hamburger.classList.remove("active");
-            mobileMenu.classList.remove("active");
-        });
-    });
-
-    // Change header background on scroll
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 100) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
-        }
+// Close nav when link clicked
+document.querySelectorAll(".nav-list ul li a").forEach(link=>{
+    link.addEventListener("click",()=>{
+        hamburger.classList.remove("active");
+        navList.classList.remove("active");
     });
 });
 
+// Hero Typing Animation
+const heroSpans = document.querySelectorAll("#hero h1 span");
+const texts = ["Hello,", "My Name is", "Biplov Khanal"];
+let count = 0;
+let index = 0;
+function typeText() {
+    if(count===texts.length) count=0;
+    const current = texts[count];
+    heroSpans[count].textContent = current.slice(0, index++);
+    if(index>current.length){
+        index=0;
+        count++;
+        setTimeout(typeText,1000);
+    } else {
+        setTimeout(typeText,200);
+    }
+}
+typeText();
+
+// Scroll Reveal
+ScrollReveal().reveal('#services .service-item', {interval:200, origin:'bottom', distance:'30px', duration:1000});
+ScrollReveal().reveal('#projects .project-item', {interval:200, origin:'bottom', distance:'30px', duration:1000});
+ScrollReveal().reveal('#about .col-left, #about .col-right', {interval:200, origin:'bottom', distance:'30px', duration:1000});
+ScrollReveal().reveal('#contact .contact-item', {interval:200, origin:'bottom', distance:'30px', duration:1000});
+ScrollReveal().reveal('footer', {interval:200, origin:'bottom', distance:'30px', duration:1000});
